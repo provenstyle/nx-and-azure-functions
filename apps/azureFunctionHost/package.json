@@ -1,0 +1,8 @@
+{
+  "name": "",
+  "private": true,
+  "main": "main.cjs",
+  "dependencies": {
+    "@azure/functions": "^4.10.0"
+  }
+}

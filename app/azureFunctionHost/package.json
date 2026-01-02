@@ -1,8 +1,0 @@
-{
-  "name": "@nx-and-azure-functions/azureFunctionHost",
-  "private": true,
-  "main": "dist/src/functions/*.js",
-  "dependencies": {
-    "@azure/functions": "^4.0.0"
-  }
-}

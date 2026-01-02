@@ -27,12 +27,12 @@ Add a typescript library
 
 Create a function app
 ```
-  func init app/azureFunctionHost --worker-runtime node --language typescript --skip-npm-install
+  func init apps/azureFunctionHost --worker-runtime node --language typescript --skip-npm-install
 ```
 
 Create a function endpoint
 ```
-  cd app/azureFunctionHost
+  cd apps/azureFunctionHost
   func new --language typescript --name helloWorld --template "HTTP trigger"
 ```
 
@@ -60,3 +60,18 @@ nx's current cli ui message up my zsh so I'm turning it off
     "enabled": false
   }
 ```
+
+## nx commands for cicd
+
+```
+npx nx package-lock azureFunctionHost
+npx nx publish azureFunctionHost -name azure-func-demo
+```
+
+## helpful nx commands
+
+```
+npx nx show projects
+npx nx reset 
+```
+
