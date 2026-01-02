@@ -15,8 +15,17 @@
 
 ## Mono repo setup
 
+Create the mono repo
 ```
   npx create-nx-workspace@latest nx-and-azure-functions --preset=ts 
+```
+
+Add a typescript library
+```
   npx nx g @nx/js:lib packages/format --bundler=tsc --unitTestRunner=vitest --linter=eslint
 ```
 
+Create a function app
+```
+  func init app/azureFunctionHost --worker-runtime node --language typescript --skip-npm-install
+```
