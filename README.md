@@ -65,7 +65,9 @@ nx's current cli ui message up my zsh so I'm turning it off
 
 ```
 npx nx package-lock azureFunctionHost
-npx nx publish azureFunctionHost -name azure-func-demo
+npx nx build azureFunctionHost 
+npx nx start azureFunctionHost 
+npx nx publish azureFunctionHost --name azure-func-demo
 ```
 
 ## helpful nx commands
