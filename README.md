@@ -17,5 +17,6 @@
 
 ```
   npx create-nx-workspace@latest nx-and-azure-functions --preset=ts 
+  npx nx g @nx/js:lib packages/format --bundler=tsc --unitTestRunner=vitest --linter=eslint
 ```
 
