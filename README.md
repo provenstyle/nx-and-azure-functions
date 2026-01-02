@@ -29,3 +29,9 @@ Create a function app
 ```
   func init app/azureFunctionHost --worker-runtime node --language typescript --skip-npm-install
 ```
+
+Create a function endpoint
+```
+  cd app/azureFunctionHost
+  func new --language typescript --name helloWorld --template "HTTP trigger"
+```
