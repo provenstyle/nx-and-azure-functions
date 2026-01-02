@@ -1,0 +1,79 @@
+{
+  "name": "azureFunctionHost",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": [""],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "dependsOn": ["clean"],
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "main": "apps/azureFunctionHost/src/index.ts",
+        "outputPath": "apps/azureFunctionHost/dist",
+        "outputFileName": "main.cjs",
+        "platform": "node",
+        "format": ["cjs"],
+        "declarationRootDir": "apps/azureFunctionHost",
+        "tsConfig": "apps/azureFunctionHost/tsconfig.json",
+        "assets": [
+          { "input": "apps/azureFunctionHost", "glob": "package*.json", "output": "/" },
+          { "input": "apps/azureFunctionHost", "glob": "host.json", "output": "/" },
+          { "input": "apps/azureFunctionHost", "glob": "local.settings.json", "output": "/" },
+          { "input": "apps/azureFunctionHost", "glob": ".funcignore", "output": "/" }
+        ]
+      },
+      "configurations": {
+        "development": {
+          "minify": false
+        },
+        "production": {
+          "minify": false
+        }
+      }
+    },
+
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rimraf dist",
+        "cwd": "apps/azureFunctionHost"
+      }
+    },
+    "install-dist-node-modules": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "npm ci --omit=dev",
+        "cwd": "apps/azureFunctionHost/dist"
+      }
+    },
+
+    "package-lock": {
+      "executor": "nx:run-commands",
+      "dependsOn": [],
+      "options": {
+        "command": "npm install --omit=dev --package-lock-only",
+        "cwd": "apps/azureFunctionHost"
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build", "install-dist-node-modules"],
+      "options": {
+        "command": "func azure functionapp publish {args.name}",
+        "cwd": "apps/azureFunctionHost/dist"
+      }
+    },
+
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build", "install-dist-node-modules"],
+      "options": {
+        "command": "func start --port 7071",
+        "cwd": "apps/azureFunctionHost/dist"
+      }
+    }
+  }
+}
