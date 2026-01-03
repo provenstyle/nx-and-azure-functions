@@ -12,7 +12,10 @@ export default [
             '{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}',
             '{projectRoot}/vite.config.{js,ts,mjs,mts}',
           ],
-          includeTransitiveDependencies: true
+          includeTransitiveDependencies: true,
+          ignoredDependencies: [
+            '@nx-and-azure-functions/format',
+          ]
         },
       ],
     },

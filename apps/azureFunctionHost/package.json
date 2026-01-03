@@ -3,6 +3,8 @@
   "private": true,
   "main": "main.cjs",
   "dependencies": {
-    "@azure/functions": "^4.10.0"
+    "@azure/functions": "^4.10.0",
+    "lodash": "^4.17.21",
+    "tslib": "^2.3.0"
   }
 }
