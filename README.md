@@ -75,5 +75,6 @@ npx nx publish azureFunctionHost --name azure-func-demo
 ```
 npx nx show projects
 npx nx reset 
+npx nx sync 
 ```
 
